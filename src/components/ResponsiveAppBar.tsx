@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Home', 'Movies', 'Series', 'New & Popular'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -38,7 +38,7 @@ function ResponsiveAppBar() {
     <AppBar position="static" style={{backgroundColor:'black'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src={'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg'} alt='Netflix img' width={92} height={28}/>
+          <img src={'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg'} style={{marginRight:20}} alt='Netflix img' width={92} height={28}/>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
