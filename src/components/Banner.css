@@ -1,7 +1,7 @@
 .index{
   -webkit-text-stroke: 4px gray;
 }
-/* .banner{
+.banner{
   -webkit-mask-image: linear-gradient(black, transparent);
   mask-image: linear-gradient(black, transparent);
-} */
+}

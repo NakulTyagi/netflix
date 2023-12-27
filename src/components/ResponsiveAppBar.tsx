@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import {useNavigate} from 'react-router-dom';
 
 const pages = ['Home', 'Movies', 'Series', 'New & Popular'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -32,6 +33,16 @@ function ResponsiveAppBar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const navigate = useNavigate();
+
+  const navigateTo = (page) => {
+    if(page !== 'Home'){
+      navigate('/'+page.toLowerCase().replaceAll(' ',''));
+    }else{
+      navigate('/')
+    }
   };
 
   return (
@@ -70,7 +81,7 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={()=>{handleCloseNavMenu();navigateTo(page)}}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -82,7 +93,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={()=>{handleCloseNavMenu();navigateTo(page)}}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
