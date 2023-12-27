@@ -4,6 +4,7 @@ import { BrowserRouter as Router,Routes ,Route } from 'react-router-dom';
 import Movies from './components/Movies.tsx';
 import Series from './components/Series.tsx';
 import NewPop from './components/NewPop.tsx';
+import "react-activity/dist/library.css";
 
 function App() {
   return (

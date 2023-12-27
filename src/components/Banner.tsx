@@ -7,7 +7,6 @@ import InfoIcon from '@mui/icons-material/InfoOutlined';
 
 function Banner({movies}:any) {
   const [movie, setMovie] = useState(null);
-  console.log(movies)
 
   useEffect(()=>{
     setMovie(movies[13])
@@ -48,7 +47,7 @@ function Banner({movies}:any) {
               fontSize: '20px',
               fontWeight: 700,
             }} 
-            startIcon={<PlayIcon style={{height: 40, width: 40}} />}>
+            startIcon={<PlayIcon style={{height: 48, width: 48}} />}>
             Play
           </Button>
           <Button component="label" variant="contained" 
@@ -58,7 +57,7 @@ function Banner({movies}:any) {
               fontWeight: 700,
               marginLeft: 8
             }} 
-            startIcon={<InfoIcon style={{height: 40, width: 40}} />}>
+            startIcon={<InfoIcon style={{height: 32, width: 32}} />}>
             More Info
           </Button>
         </div>
