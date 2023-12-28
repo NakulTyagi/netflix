@@ -49,7 +49,7 @@ function ResponsiveAppBar() {
     <AppBar position="static" style={{backgroundColor:'black'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src={'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg'} style={{marginRight:20}} alt='Netflix img' width={92} height={28}/>
+          <img loading="lazy" src={'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg'} style={{marginRight:20}} alt='Netflix img' width={92} height={28}/>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -87,7 +87,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          {/* <img src={'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg'} alt='Netflix img' width={92} height={28}/> */}
+          {/* <img loading="lazy" src={'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg'} alt='Netflix img' width={92} height={28}/> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

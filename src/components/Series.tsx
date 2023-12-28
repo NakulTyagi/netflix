@@ -31,7 +31,7 @@ function Series() {
         <div style={{display:'flex',  gap:20, maxWidth: '90%', marginTop:20, overflow: 'auto'}}>
             {movies.length>0 && movies.slice(10,20).map((film, index)=>{
               return <div style={{display:'flex', alignItems:'center'}} >
-                <img src={film.backdrop_path} style={{borderRadius: 12}} alt="" height={294} width={520} />
+                <img loading="lazy" src={film.backdrop_path} style={{borderRadius: 12}} alt="" height={190} width={330} />
               </div>
             })}
         </div>
@@ -60,7 +60,7 @@ function Series() {
                     marginRight: -60,
                   }}
                 >{index+1}</div>
-                <img src={film.poster_path} alt="" height={274} width={182} />
+                <img loading="lazy" src={film.poster_path} alt="" height={274} width={182} />
               </div>
             })}
         </div>
@@ -78,7 +78,7 @@ function Series() {
         <div style={{display:'flex',  gap:20, maxWidth: '90%', marginTop:20, overflow: 'auto'}}>
             {movies.length>0 && movies.slice(20,30).map((film, index)=>{
               return <div style={{display:'flex', alignItems:'center'}} >
-                <img src={film.poster_path} alt="" height={696} width={410} />
+                <img loading="lazy" src={film.poster_path} alt="" height={696} width={410} />
               </div>
             })}
         </div>
@@ -96,7 +96,7 @@ function Series() {
         <div style={{display:'flex',  gap:20, maxWidth: '90%', marginTop:20, overflow: 'auto'}}>
             {movies.length>0 && movies.slice(30,40).map((film, index)=>{
               return <div style={{display:'flex', alignItems:'center'}} >
-                <img src={film.poster_path} alt="" height={696} width={410} />
+                <img loading="lazy" src={film.poster_path} alt="" height={696} width={410} />
               </div>
             })}
         </div>

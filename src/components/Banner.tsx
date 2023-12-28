@@ -3,10 +3,12 @@ import './Banner.css';
 import { Button } from '@mui/material';
 import PlayIcon from '@mui/icons-material/PlayArrowRounded';
 import InfoIcon from '@mui/icons-material/InfoOutlined';
+import { useNavigate } from 'react-router-dom';
 
 
 function Banner({movies}:any) {
   const [movie, setMovie] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(()=>{
     setMovie(movies[13])
@@ -42,6 +44,7 @@ function Banner({movies}:any) {
             {movie.overview}
           </div>
           <Button component="label" variant="contained" 
+            onClick={()=>navigate('/play')}
             style=
             {{backgroundColor: 'white', color: 'black', marginTop: 44, height: 60, width: 168,
               fontSize: '20px',

@@ -3,6 +3,7 @@ import movieService from '../services/movie-service.ts';
 import ResponsiveAppBar from './ResponsiveAppBar.tsx';
 import Banner from './Banner.tsx';
 import { Spinner } from "react-activity";
+import MovieList from './MovieList.tsx';
 
 function Home() {
   useEffect(()=>{getList()},[]);
@@ -619,96 +620,19 @@ function Home() {
     // console.log(res)
   }
   return (
-    <div style={{  background: 'black'  }}>
+    <div style={{  background: 'black', marginBottom: 24  }}>
       <ResponsiveAppBar/>
       {movies.length > 0 ? 
       <div>
         <Banner movies={movies} />
-        <div style={{marginLeft:100, marginTop: 50}}>
-        <div style={{
-          color: '#FFF',
-          fontFamily: 'Helvetica Neue',
-          fontSize: '30px',
-          fontWeight: 700,
-        }}>
-          New & Popular
-        </div>
-        <div style={{display:'flex',  gap:20, maxWidth: '90%', overflow: 'auto'}}>
-            {movies.length>0 && movies.slice(0,10).map((film, index)=>{
-              return <div style={{display:'flex', alignItems:'center'}} >
-                <div
-                  className='index'
-                  style={{
-                    color: '#000',
-                    fontFamily: 'Roboto',
-                    fontSize: 364,
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    marginRight: -60,
-                  }}
-                >{index+1}</div>
-                <img src={film.poster_path} alt="" height={274} width={182} />
-              </div>
-            })}
-        </div>
+        <MovieList movies={movies.slice(0,10)} title={'Popular on Netflix'} />
+        <MovieList movies={movies.slice(10,20)} title={'Continue Watching'} />
+        <MovieList movies={movies.slice(20,30)} title={'Trending Now'} />
+        <MovieList movies={movies.slice(30,40)} title={'New Releases'} />
+        <MovieList movies={movies.slice(40,50)} title={'US TV Dramas'} />
+
       </div>
-      <div style={{marginLeft:100, marginTop: 50}}>
-        <div style={{
-          color: '#FFF',
-          fontFamily: 'Helvetica Neue',
-          fontSize: '30px',
-          fontWeight: 700,
-        }}>
-          Top 10 in India
-        </div>
-        <div style={{display:'flex',  gap:20, maxWidth: '90%', overflow: 'auto'}}>
-            {movies.length>0 && movies.slice(10,20).map((film, index)=>{
-              return <div style={{display:'flex', alignItems:'center'}} >
-                <div
-                  className='index'
-                  style={{
-                    color: '#000',
-                    fontFamily: 'Roboto',
-                    fontSize: 364,
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    marginRight: -60,
-                  }}
-                >{index+1}</div>
-                <img src={film.poster_path} alt="" height={274} width={182} />
-              </div>
-            })}
-        </div>
-      </div>
-      <div style={{marginLeft:100, marginTop: 50}}>
-        <div style={{
-          color: '#FFF',
-          fontFamily: 'Helvetica Neue',
-          fontSize: '30px',
-          fontWeight: 700,
-        }}>
-          Top 10 in World
-        </div>
-        <div style={{display:'flex',  gap:20, maxWidth: '90%', overflow: 'auto'}}>
-            {movies.length>0 && movies.slice(20,30).map((film, index)=>{
-              return <div style={{display:'flex', alignItems:'center'}} >
-                <div
-                  className='index'
-                  style={{
-                    color: '#000',
-                    fontFamily: 'Roboto',
-                    fontSize: 364,
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    marginRight: -60,
-                  }}
-                >{index+1}</div>
-                <img src={film.poster_path} alt="" height={274} width={182} />
-              </div>
-            })}
-        </div>
-      </div>
-      </div>
+
       : <div  style={{display:'flex', justifyContent:'center', alignItems:'center', marginTop: '10%'}}>
       <Spinner color='red'/>
       </div>}
