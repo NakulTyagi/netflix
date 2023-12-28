@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import movieService from '../services/movie-service.ts';
-import ResponsiveAppBar from './ResponsiveAppBar.tsx';
-import Banner from './Banner.tsx';
+import movieService from '../../services/movie-service.ts';
+import ResponsiveAppBar from '../ResponsiveAppBar.tsx';
+import Banner from '../Banner.tsx';
 import { Spinner } from 'react-activity';
 
 function Series() {

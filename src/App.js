@@ -1,11 +1,11 @@
 import './App.css';
-import Home from './components/Home.tsx';
+import Home from './components/pages/Home.tsx';
 import { Routes ,Route } from 'react-router-dom';
-import Movies from './components/Movies.tsx';
-import Series from './components/Series.tsx';
-import NewPop from './components/NewPop.tsx';
+import Movies from './components/pages/Movies.tsx';
+import Series from './components/pages/Series.tsx';
+import NewPop from './components/pages/NewPop.tsx';
 import "react-activity/dist/library.css";
-import VideoPlayer from './components/VideoPlayer.tsx';
+import VideoPlayer from './components/pages/VideoPlayer.tsx';
 
 function App() {
   return (

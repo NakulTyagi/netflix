@@ -16,7 +16,7 @@ function TopTen({movies, title}:any) {
       </div>
       <div style={{display:'flex',  gap:20, maxWidth: '90%', overflow: 'auto'}}>
           {movies.length>0 && movies.map((film, index)=>{
-            return <div style={{display:'flex', alignItems:'center'}} onClick={()=>navigate('/play')} >
+            return <div key={index} style={{display:'flex', alignItems:'center'}} onClick={()=>navigate('/play')} >
               <div
                 className='index'
                 style={{
