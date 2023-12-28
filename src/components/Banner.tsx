@@ -11,7 +11,7 @@ function Banner({movies}:any) {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    setMovie(movies[13])
+    setMovie(movies[Math.floor(Math.random() * 20)])
   },[])
 
   return (

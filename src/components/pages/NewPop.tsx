@@ -3,6 +3,9 @@ import movieService from '../../services/movie-service.ts';
 import ResponsiveAppBar from '../ResponsiveAppBar.tsx';
 import Banner from '../Banner.tsx';
 import { Spinner } from 'react-activity';
+import MovieList from '../MovieList.tsx';
+import VertList from '../VertList.tsx';
+import TopTen from '../TopTen.tsx';
 
 function NewPop() {
 
@@ -625,117 +628,16 @@ function NewPop() {
       <ResponsiveAppBar/>
       {movies.length>0 ?
       <div>
-        <div style={{marginLeft:100, marginTop: 50,}}>
-          <div style={{
-            color: '#FFF',
-            fontFamily: 'Helvetica Neue',
-            fontSize: '30px',
-            fontWeight: 700,
-          }}>
-            New on Netflix
-          </div>
-          <div style={{display:'flex',  gap:20, maxWidth: '90%', marginTop:20, overflow: 'auto'}}>
-              {movies.length>0 && movies.slice(10,20).map((film, index)=>{
-                return <div style={{display:'flex', alignItems:'center'}} >
-                  <img loading="lazy" src={film.backdrop_path} style={{borderRadius: 12}} alt="" height={190} width={330} />
-                </div>
-              })}
-          </div>
-        </div>
+        <MovieList movies={movies.slice(0,10)} title={'New on Netflix'} />
 
-        <div style={{marginLeft:100, marginTop: 50}}>
-          <div style={{
-            color: '#FFF',
-            fontFamily: 'Helvetica Neue',
-            fontSize: '30px',
-            fontWeight: 700,
-          }}>
-            Top Movies in India
-          </div>
-          <div style={{display:'flex',  gap:20, maxWidth: '90%', overflow: 'auto'}}>
-              {movies.length>0 && movies.slice(0,10).map((film, index)=>{
-                return <div style={{display:'flex', alignItems:'center'}} >
-                  <div
-                    className='index'
-                    style={{
-                      color: '#000',
-                      fontFamily: 'Roboto',
-                      fontSize: 364,
-                      fontStyle: 'normal',
-                      fontWeight: 700,
-                      marginRight: -60,
-                    }}
-                  >{index+1}</div>
-                  <img loading="lazy" src={film.poster_path} alt="" height={274} width={182} />
-                </div>
-              })}
-          </div>
-        </div>
+        <TopTen movies={movies.slice(10,20)} title={'Top Movies in India'} />
 
-        <div style={{marginLeft:100, marginTop: 50}}>
-          <div style={{
-            color: '#FFF',
-            fontFamily: 'Helvetica Neue',
-            fontSize: '30px',
-            fontWeight: 700,
-          }}>
-            Top Shows in India
-          </div>
-          <div style={{display:'flex',  gap:20, maxWidth: '90%', overflow: 'auto'}}>
-              {movies.length>0 && movies.slice(0,10).reverse().map((film, index)=>{
-                return <div style={{display:'flex', alignItems:'center'}} >
-                  <div
-                    className='index'
-                    style={{
-                      color: '#000',
-                      fontFamily: 'Roboto',
-                      fontSize: 364,
-                      fontStyle: 'normal',
-                      fontWeight: 700,
-                      marginRight: -60,
-                    }}
-                  >{index+1}</div>
-                  <img loading="lazy" src={film.poster_path} alt="" height={274} width={182} />
-                </div>
-              })}
-          </div>
-        </div>
+        <TopTen movies={movies.slice(20,30)} title={'Top Shows in India'} />
 
-        <div style={{marginLeft:100, marginTop: 50,}}>
-          <div style={{
-            color: '#FFF',
-            fontFamily: 'Helvetica Neue',
-            fontSize: '30px',
-            fontWeight: 700,
-          }}>
-            Coming Next week
-          </div>
-          <div style={{display:'flex',  gap:20, maxWidth: '90%', marginTop:20, overflow: 'auto'}}>
-              {movies.length>0 && movies.slice(20,30).map((film, index)=>{
-                return <div style={{display:'flex', alignItems:'center'}} >
-                  <img loading="lazy" src={film.backdrop_path} alt="" height={190} width={330} />
-                </div>
-              })}
-          </div>
-        </div>
+        <MovieList movies={movies.slice(30,40)} title={'Coming Next Week'}/>
 
-        <div style={{marginLeft:100, marginTop: 50,}}>
-          <div style={{
-            color: '#FFF',
-            fontFamily: 'Helvetica Neue',
-            fontSize: '30px',
-            fontWeight: 700,
-          }}>
-            Worth the wait
-          </div>
-          <div style={{display:'flex',  gap:20, maxWidth: '90%', marginTop:20, overflow: 'auto'}}>
-              {movies.length>0 && movies.slice(30,40).map((film, index)=>{
-                return <div style={{display:'flex', alignItems:'center'}} >
-                  <img loading="lazy" src={film.poster_path} alt="" height={696} width={410} />
-                </div>
-              })}
-          </div>
-        </div>
+        <VertList movies={movies.slice(40,50)} title={'Worth the Wait'}/>
+
       </div>:
 
       <div  style={{display:'flex', justifyContent:'center', alignItems:'center', marginTop: '10%'}}>
