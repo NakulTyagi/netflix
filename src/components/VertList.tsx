@@ -11,7 +11,7 @@ function VertList({movies, title}:any) {
       }}>
         {title}
       </div>
-      <div style={{display:'flex',  gap:20, maxWidth: '90%', marginTop:20, overflow: 'auto'}}>
+      <div style={{display:'flex',  gap:20, maxWidth: '94%', marginTop:20, overflow: 'auto'}}>
           {movies.length>0 && movies.map((film, index)=>{
             return <div key={index} style={{display:'flex', alignItems:'center'}} >
               <img loading="lazy" src={film.poster_path} alt="" height={696} width={410} />

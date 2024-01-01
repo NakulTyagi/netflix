@@ -46,7 +46,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" style={{backgroundColor:'black'}}>
+    <AppBar position="fixed" style={{backgroundColor:'black'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <img loading="lazy" src={'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg'} style={{marginRight:20}} alt='Netflix img' width={92} height={28}/>
