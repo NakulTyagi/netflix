@@ -4,14 +4,29 @@ import { Button } from '@mui/material';
 import PlayIcon from '@mui/icons-material/PlayArrowRounded';
 import InfoIcon from '@mui/icons-material/InfoOutlined';
 import { useNavigate } from 'react-router-dom';
+import InfoDialog from './dialogs/InfoDialog.tsx';
 
 
 function Banner({movies}:any) {
   const [movie, setMovie] = useState(null);
   const navigate = useNavigate();
+  const [open, setOpen] = React.useState(false);
+  const emails = ['username@gmail.com', 'user02@gmail.com'];
+  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value: string) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
 
   useEffect(()=>{
-    setMovie(movies[Math.floor(Math.random() * 20)])
+    setMovie(movies[Math.floor(Math.random() * 20) || 0]);
+    console.log(movies[0])
+
   },[])
 
   return (
@@ -54,6 +69,7 @@ function Banner({movies}:any) {
             Play
           </Button>
           <Button component="label" variant="contained" 
+            onClick={handleClickOpen}
             style=
             {{backgroundColor: 'rgba(255, 255, 255, 0.20)', color: 'white', marginTop: 44, height: 60,
               fontSize: '20px',
@@ -63,6 +79,13 @@ function Banner({movies}:any) {
             startIcon={<InfoIcon style={{height: 32, width: 32}} />}>
             More Info
           </Button>
+          <InfoDialog
+            selectedValue={selectedValue}
+            movie={movie}
+            movies={movies}
+            open={open}
+            onClose={handleClose}
+          />
         </div>
         </div>
       }
