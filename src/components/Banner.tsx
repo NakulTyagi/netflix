@@ -36,7 +36,7 @@ function Banner({movies}:any) {
       {
         movies && movie && 
         <div>
-        <div className='banner' style={{height: window.screen.height*0.6, marginTop:0,width:'100%',backgroundImage: `url(${movie?.backdrop_path})`, backgroundSize:'cover', position:'relative'}}>
+        <div className='banner' style={{height: window.screen.height*0.62, marginTop:0,width:'100%',backgroundImage: `url(${movie?.backdrop_path})`, backgroundSize:'cover', position:'relative'}}>
         </div>
         <div style={{position:'absolute', top: '30%', maxHeight: 600,marginLeft: 100, overflowX:'hidden'}}>
           <div
