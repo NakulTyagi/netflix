@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 function MovieList({movies, title}:any) {
   const navigate = useNavigate();
   return (
-    <div style={{marginLeft:100, marginTop: 50, cursor: 'pointer'}}>
+    <div style={{ cursor: 'pointer', paddingTop: 24, paddingBottom:24}}>
       <div style={{
         color: '#FFF',
         fontFamily: 'Helvetica Neue',

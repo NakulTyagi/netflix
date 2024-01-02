@@ -629,6 +629,8 @@ function Movies() {
       {movies.length>0 ? 
       <div>
         <Banner movies={movies} />
+        <div style={{marginLeft:100, position:'relative'}}>
+
         <MovieList movies={movies.slice(10,20)} title={'New on Netflix'} />
 
         <TopTen movies={movies.slice(0,10)} title={'Top Movies in India'} />
@@ -637,6 +639,7 @@ function Movies() {
         {/* <VertList movies={movies.slice(20,30)} title={'Recommended'}/> */}
 
         <MovieList movies={movies.slice(20,30)} title={'Netflix Originals'}/>
+        </div>
       </div>:
       <div  style={{display:'flex', justifyContent:'center', alignItems:'center', marginTop: '10%'}}>
       <Spinner color='red'/>

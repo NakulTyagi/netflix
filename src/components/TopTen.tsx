@@ -5,7 +5,7 @@ function TopTen({movies, title}:any) {
   const navigate = useNavigate();
 
   return (
-    <div style={{marginLeft:100, marginTop: 50, cursor: 'pointer'}}>
+    <div style={{ marginTop: 50, cursor: 'pointer'}}>
       <div style={{
         color: '#FFF',
         fontFamily: 'Helvetica Neue',

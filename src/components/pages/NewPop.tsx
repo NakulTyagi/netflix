@@ -627,7 +627,7 @@ function NewPop() {
     <div style={{  background: 'black', paddingBottom: 50  }}>
       <ResponsiveAppBar/>
       {movies.length>0 ?
-      <div>
+      <div style={{marginLeft:100, marginTop: 100,position:'relative'}}>
         <MovieList movies={movies.slice(0,10)} title={'New on Netflix'} />
 
         <TopTen movies={movies.slice(10,20)} title={'Top Movies in India'} />

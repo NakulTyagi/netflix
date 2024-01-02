@@ -4,6 +4,7 @@ import ResponsiveAppBar from '../ResponsiveAppBar.tsx';
 import Banner from '../Banner.tsx';
 import { Spinner } from "react-activity";
 import MovieList from '../MovieList.tsx';
+import TopTen from '../TopTen.tsx';
 
 function Home() {
   useEffect(()=>{getList()},[]);
@@ -625,12 +626,12 @@ function Home() {
       {movies.length > 0 ? 
       <div>
         <Banner movies={movies} />
-        <MovieList movies={movies.slice(0,10)} title={'Popular on Netflix'} />
+        <div style={{marginLeft:100, paddingTop:20, position:'relative'}}>
         <MovieList movies={movies.slice(10,20)} title={'Continue Watching'} />
-        <MovieList movies={movies.slice(20,30)} title={'Trending Now'} />
+        <TopTen movies={movies.slice(20,30)} title={'Top Movies in India'} />
         <MovieList movies={movies.slice(30,40)} title={'New Releases'} />
         <MovieList movies={movies.slice(40,50)} title={'US TV Dramas'} />
-
+        </div>
       </div>
 
       : <div  style={{display:'flex', justifyContent:'center', alignItems:'center', marginTop: '10%'}}>

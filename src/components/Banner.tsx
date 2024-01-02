@@ -5,6 +5,8 @@ import PlayIcon from '@mui/icons-material/PlayArrowRounded';
 import InfoIcon from '@mui/icons-material/InfoOutlined';
 import { useNavigate } from 'react-router-dom';
 import InfoDialog from './dialogs/InfoDialog.tsx';
+import MovieList from './MovieList.tsx';
+import LinesEllipsis from 'react-lines-ellipsis';
 
 
 function Banner({movies}:any) {
@@ -24,7 +26,7 @@ function Banner({movies}:any) {
   };
 
   useEffect(()=>{
-    setMovie(movies[Math.floor(Math.random() * 20) || 0]);
+    setMovie(movies[Math.floor(Math.random() * 30) || 0]);
     console.log(movies[0])
 
   },[])
@@ -34,30 +36,34 @@ function Banner({movies}:any) {
       {
         movies && movie && 
         <div>
-        <div className='banner' style={{height: window.screen.height -250, width:'100%',backgroundImage: `url(${movie?.backdrop_path})`, backgroundSize:'cover', position:'relative'}}>
+        <div className='banner' style={{height: window.screen.height*0.6, marginTop:68,width:'100%',backgroundImage: `url(${movie?.backdrop_path})`, backgroundSize:'cover', position:'relative'}}>
         </div>
-        <div style={{position:'absolute', bottom: 120, marginLeft: 100, overflowX:'hidden'}}>
+        <div style={{position:'absolute', top: '30%', maxHeight: 600,marginLeft: 100, overflowX:'hidden'}}>
           <div
             style={{
               color: '#FFF',
-              fontSize: '30px',
+              fontSize: '36px',
               fontWeight: 700,
-
+              textTransform: 'uppercase'
             }}
           >
             {movie?.title}
           </div>
-          <div
-            style={{
+          <LinesEllipsis
+              text={movie.overview}
+              maxLine='3'
+              ellipsis='...'
+              trimRight
+              basedOn='letters'
+                        style={{
               color: '#FFF',
               fontSize: '22px',
               fontWeight: 300,
               marginTop: 40,
               width: '40%'
             }}
-          >
-            {movie.overview}
-          </div>
+          />
+
           <Button component="label" variant="contained" 
             onClick={()=>navigate('/play')}
             style=
@@ -86,7 +92,11 @@ function Banner({movies}:any) {
             open={open}
             onClose={handleClose}
           />
+
         </div>
+        <div style={{marginTop: 0, marginLeft:100}}>
+            <MovieList movies={movies.slice(0,10)} title={'Popular on Netflix'} />
+          </div>
         </div>
       }
     </div>
