@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {useNavigate} from 'react-router-dom';
+import useDetectScroll from '@smakss/react-scroll-direction';
+import './Banner.css';
 
 const pages = ['Home', 'Movies', 'Series', 'New & Popular'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -44,10 +46,11 @@ function ResponsiveAppBar() {
       navigate('/')
     }
   };
+  const { scrollDir, scrollPosition } = useDetectScroll();
 
   return (
-    <AppBar position="fixed" style={{backgroundColor:'black'}}>
-      <Container maxWidth="xl">
+    <AppBar className={scrollPosition.top===0? 'navbar':''} position="fixed" style={{backgroundColor: scrollPosition.top===0? 'transparent':'black', boxShadow: 'none'}}>
+      <Container maxWidth="xl" style={{zIndex: 100}}>
         <Toolbar disableGutters>
           <img loading="lazy" src={'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg'} style={{marginRight:20}} alt='Netflix img' width={92} height={28}/>
 
