@@ -5,7 +5,8 @@ import Banner from '../Banner.tsx';
 import { Spinner } from "react-activity";
 import MovieList from '../MovieList.tsx';
 import TopTen from '../TopTen.tsx';
-import { movieData, youtubeSearchData } from '../../data/staticData.tsx';
+import { movieData } from '../../data/staticData.tsx';
+import { isMobile } from 'react-device-detect';
 
 function Home() {
   useEffect(()=>{getList()},[]);
@@ -29,7 +30,7 @@ function Home() {
       {movies.length > 0 ? 
       <div>
         <Banner movies={movies} />
-        <div style={{marginLeft:100, paddingTop:20, position:'relative'}}>
+        <div style={{marginLeft: isMobile ? 20: 100, paddingTop:20, position:'relative'}}>
         <MovieList movies={movies.slice(10,20)} title={'Continue Watching'} />
         <TopTen movies={movies.slice(20,30)} title={'Top Movies in India'} />
         <MovieList movies={movies.slice(30,40)} title={'New Releases'} />

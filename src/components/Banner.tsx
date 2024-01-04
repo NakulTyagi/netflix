@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import InfoDialog from './dialogs/InfoDialog.tsx';
 import MovieList from './MovieList.tsx';
 import LinesEllipsis from 'react-lines-ellipsis';
+import { isMobile } from 'react-device-detect';
 
 
 function Banner({movies}:any) {
@@ -36,19 +37,27 @@ function Banner({movies}:any) {
       {
         movies && movie && 
         <div>
-        <div className='banner' style={{height: window.screen.height*0.62, marginTop:0,width:'100%',backgroundImage: `url(${movie?.backdrop_path})`, backgroundSize:'cover', position:'relative'}}>
+        <div className='banner' 
+        style={{
+          height: isMobile?  window.screen.height*0.5 :window.screen.height*0.62 ,
+          marginTop:0,width:'100%',backgroundImage: `url(${isMobile? movie?.poster_path : movie?.backdrop_path})`,
+          backgroundSize: 'cover', backgroundRepeat:'no-repeat',  position:'relative'
+        }}>
         </div>
-        <div style={{position:'absolute', top: '30%', maxHeight: 600,marginLeft: 100, overflowX:'hidden'}}>
-          <div
-            style={{
-              color: '#FFF',
-              fontSize: '36px',
-              fontWeight: 700,
-              textTransform: 'uppercase'
+        <div style={{position: 'absolute', top: isMobile? 'auto': '30%', height: isMobile ?360: 600, marginLeft: isMobile ? 20: 100, marginRight: 20,overflow:'hidden'}}>
+          {<LinesEllipsis
+              text={movie.title}
+              maxLine={isMobile ? '1':'2'}
+              ellipsis='...'
+              trimRight
+              basedOn='letters'
+              style={{
+                color: '#FFF',
+                fontSize: '36px',
+                fontWeight: 700,
+                textTransform: 'uppercase'
             }}
-          >
-            {movie?.title}
-          </div>
+          />}
           <LinesEllipsis
               text={movie.overview}
               maxLine='3'
@@ -60,31 +69,31 @@ function Banner({movies}:any) {
               fontSize: '22px',
               fontWeight: 300,
               marginTop: 40,
-              width: '40%'
+              width: isMobile? '100%': '40%'
             }}
           />
 
           <Button component="label" variant="contained" 
             onClick={()=>navigate('/play',{state:{title:movie?.title}})}
             style=
-            {{backgroundColor: 'white', color: 'black', marginTop: 44, height: 60, width: 168,
-              fontSize: '20px',
+            {{backgroundColor: 'white', color: 'black', marginTop: 44, height: isMobile? 36: 60, width: isMobile ? 120: 168, 
+              fontSize: isMobile ?'18px':'20px',
               fontWeight: 700,
             }} 
             startIcon={<PlayIcon style={{height: 48, width: 48}} />}>
             Play
           </Button>
-          <Button component="label" variant="contained" 
+          {!isMobile &&<Button component="label" variant="contained" 
             onClick={handleClickOpen}
             style=
-            {{backgroundColor: 'rgba(255, 255, 255, 0.20)', color: 'white', marginTop: 44, height: 60,
-              fontSize: '20px',
-              fontWeight: 700,
+            {{backgroundColor: 'rgba(255, 255, 255, 0.20)', color: 'white', marginTop: 44, height: isMobile? 40: 60, width: isMobile ? 160: 'auto', 
+              fontSize: isMobile ?'14px':'20px',
+              fontWeight: 700, 
               marginLeft: 8
             }} 
             startIcon={<InfoIcon style={{height: 32, width: 32}} />}>
             More Info
-          </Button>
+          </Button>}
           <InfoDialog
             selectedValue={selectedValue}
             movie={movie}
@@ -94,7 +103,7 @@ function Banner({movies}:any) {
           />
 
         </div>
-        <div style={{marginTop: 0, marginLeft:100}}>
+        <div style={{marginTop: isMobile? 300:0, marginLeft: isMobile?20: 100}}>
             <MovieList movies={movies.slice(0,10)} title={'Popular on Netflix'} />
           </div>
         </div>

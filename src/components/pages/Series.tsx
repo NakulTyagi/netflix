@@ -3,6 +3,7 @@ import movieService from '../../services/movie-service.ts';
 import ResponsiveAppBar from '../ResponsiveAppBar.tsx';
 import Banner from '../Banner.tsx';
 import { Spinner } from 'react-activity';
+import { isMobile } from 'react-device-detect';
 
 function Series() {
 
@@ -19,7 +20,7 @@ function Series() {
       {movies.length>0 ?
       <div>
       <Banner movies={movies} />
-      <div style={{marginLeft:100, marginTop: 50,}}>
+      <div style={{marginLeft: isMobile ? 20: 100, marginTop: 50,}}>
         <div style={{
           color: '#FFF',
           fontFamily: 'Helvetica Neue',
@@ -37,7 +38,7 @@ function Series() {
         </div>
       </div>
 
-      <div style={{marginLeft:100, marginTop: 50}}>
+      <div style={{marginLeft: isMobile ? 20: 100, marginTop: 50}}>
         <div style={{
           color: '#FFF',
           fontFamily: 'Helvetica Neue',
@@ -66,7 +67,7 @@ function Series() {
         </div>
       </div>
 
-      <div style={{marginLeft:100, marginTop: 50,}}>
+      <div style={{marginLeft: isMobile ? 20: 100, marginTop: 50,}}>
         <div style={{
           color: '#FFF',
           fontFamily: 'Helvetica Neue',
@@ -84,7 +85,7 @@ function Series() {
         </div>
       </div>
 
-      <div style={{marginLeft:100, marginTop: 50,}}>
+      <div style={{marginLeft: isMobile ? 20: 100, marginTop: 50,}}>
         <div style={{
           color: '#FFF',
           fontFamily: 'Helvetica Neue',

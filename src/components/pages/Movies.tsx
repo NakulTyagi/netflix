@@ -6,6 +6,7 @@ import { Spinner } from 'react-activity';
 import TopTen from '../TopTen.tsx';
 import MovieList from '../MovieList.tsx';
 import VertList from '../VertList.tsx';
+import { isMobile } from 'react-device-detect';
 
 function Movies() {
 
@@ -629,7 +630,7 @@ function Movies() {
       {movies.length>0 ? 
       <div>
         <Banner movies={movies} />
-        <div style={{marginLeft:100, position:'relative'}}>
+        <div style={{marginLeft: isMobile ? 20: 100, position:'relative'}}>
 
         <MovieList movies={movies.slice(10,20)} title={'New on Netflix'} />
 

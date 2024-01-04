@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import movieService from '../../services/movie-service.ts';
 import ResponsiveAppBar from '../ResponsiveAppBar.tsx';
-import Banner from '../Banner.tsx';
 import { Spinner } from 'react-activity';
 import MovieList from '../MovieList.tsx';
 import VertList from '../VertList.tsx';
 import TopTen from '../TopTen.tsx';
+import { isMobile } from 'react-device-detect';
 
 function NewPop() {
 
@@ -627,7 +626,7 @@ function NewPop() {
     <div style={{  background: 'black', paddingBottom: 50  }}>
       <ResponsiveAppBar/>
       {movies.length>0 ?
-      <div style={{marginLeft:100, marginTop: 100,position:'relative'}}>
+      <div style={{marginLeft: isMobile ? 20: 100, marginTop: 100,position:'relative'}}>
         <MovieList movies={movies.slice(0,10)} title={'New on Netflix'} />
 
         <TopTen movies={movies.slice(10,20)} title={'Top Movies in India'} />
