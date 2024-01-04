@@ -55,7 +55,7 @@ export default function InfoDialog(props: SimpleDialogProps) {
         <DialogActions style={{display:'flex', justifyContent:'flex-start', alignItems:'center'}}>
 
           <Button component="label" variant="contained" 
-            onClick={()=>navigate('/play')}
+            onClick={()=>navigate('/play',{state:{title:movie?.title}} )}
             style=
             {{backgroundColor: 'white', color: 'black', height: 40, width: 128,
               fontSize: '20px',

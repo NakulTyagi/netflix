@@ -65,7 +65,7 @@ function Banner({movies}:any) {
           />
 
           <Button component="label" variant="contained" 
-            onClick={()=>navigate('/play')}
+            onClick={()=>navigate('/play',{state:{title:movie?.title}})}
             style=
             {{backgroundColor: 'white', color: 'black', marginTop: 44, height: 60, width: 168,
               fontSize: '20px',

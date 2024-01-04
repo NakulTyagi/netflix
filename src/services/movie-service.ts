@@ -1,3 +1,5 @@
+const API_KEY = 'AIzaSyBl-ChvnSrM5GV226-z6O9Ckt4sXBxKSKc'
+
 const movieService = {
     getMovieTitles: async () => {
         const url = 'https://movies-api14.p.rapidapi.com/shows';
@@ -38,6 +40,12 @@ const movieService = {
         };
     
         const response = await fetch(url, options);;
+        return response.json();
+      },
+
+      getYoutubeSearch: async (searchQuery='zoo') => {
+        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${searchQuery}&type=video&key=${API_KEY}`;
+        const response = await fetch(url);
         return response.json();
       },
 }
