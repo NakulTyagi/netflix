@@ -14,7 +14,7 @@ function MovieDetailList({movies, title}:any) {
       }}>
         {title}
       </div>
-      <div style={{display:'flex', justifyContent:'space-between', gap:20, marginTop:20, flexWrap:'wrap'}}>
+      <div style={{display:'flex', justifyContent:'flex-start', gap:20, marginTop:20, flexWrap:'wrap'}}>
           {movies.length>0 && movies.map((film, index)=>{
             return <div key={index} style={{borderRadius:12,alignItems:'center', width: 360}} onClick={()=>navigate('/play', {state:{title: film.title}})} >
               <img loading="lazy" src={film.backdrop_path} alt="" height={190} width={360} style={{ borderTopLeftRadius: 12, borderTopRightRadius:12}} />

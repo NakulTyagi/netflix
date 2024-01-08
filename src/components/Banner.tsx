@@ -3,19 +3,22 @@ import './Banner.css';
 import { Button } from '@mui/material';
 import PlayIcon from '@mui/icons-material/PlayArrowRounded';
 import InfoIcon from '@mui/icons-material/InfoOutlined';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import InfoDialog from './dialogs/InfoDialog.tsx';
 import MovieList from './MovieList.tsx';
 import LinesEllipsis from 'react-lines-ellipsis';
 import { isMobile } from 'react-device-detect';
+import Dropdown from './Dropdown.tsx';
 
 
-function Banner({movies}:any) {
+function Banner({movies, genres=[], genresUpdate}:any) {
   const [movie, setMovie] = useState(null);
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const emails = ['username@gmail.com', 'user02@gmail.com'];
   const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+  const location = useLocation();
+  const [genreSelected, setGenreSelected] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -28,8 +31,6 @@ function Banner({movies}:any) {
 
   useEffect(()=>{
     setMovie(movies[Math.floor(Math.random() * 30) || 0]);
-    console.log(movies[0])
-
   },[])
 
   return (
@@ -44,8 +45,24 @@ function Banner({movies}:any) {
           backgroundSize: 'cover', backgroundRepeat:'no-repeat',  position:'relative'
         }}>
         </div>
+        {location.pathname.slice(1) && !isMobile && <div
+        style={{  position: 'absolute', top: isMobile? 'auto': '10%', display:'flex'}}
+        >
+          <div
+            style={{
+              marginLeft: isMobile ? 20: 100,
+              marginRight: 60,
+              color: '#FFF',
+              fontSize: '56px',
+              fontWeight: 500,
+            }}
+          >{location.pathname.slice(1) === 'movies'?'Movies':'TV Shows'}</div>
+          <div>
+            <Dropdown genres={genres} selectedValue={(genre)=>{genresUpdate(genre); setGenreSelected(true)}} />
+          </div>
+        </div>}
         <div style={{position: 'absolute', top: isMobile? 'auto': '30%', height: isMobile ?360: 600, marginLeft: isMobile ? 20: 100, marginRight: 20,overflow:'hidden'}}>
-          {<LinesEllipsis
+          <LinesEllipsis
               text={movie.title}
               maxLine={isMobile ? '1':'2'}
               ellipsis='...'
@@ -57,7 +74,7 @@ function Banner({movies}:any) {
                 fontWeight: 700,
                 textTransform: 'uppercase'
             }}
-          />}
+          />
           <LinesEllipsis
               text={movie.overview}
               maxLine='3'
@@ -103,9 +120,9 @@ function Banner({movies}:any) {
           />
 
         </div>
-        <div style={{marginTop: isMobile? 300:0, marginLeft: isMobile?20: 100}}>
+        {!genreSelected && <div style={{marginTop: isMobile? 300:0, marginLeft: isMobile?20: 100}}>
             <MovieList movies={movies.slice(0,10)} title={'Popular on Netflix'} />
-          </div>
+          </div>}
         </div>
       }
     </div>

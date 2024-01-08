@@ -4,106 +4,69 @@ import ResponsiveAppBar from '../ResponsiveAppBar.tsx';
 import Banner from '../Banner.tsx';
 import { Spinner } from 'react-activity';
 import { isMobile } from 'react-device-detect';
+import MovieList from '../MovieList.tsx';
+import TopTen from '../TopTen.tsx';
+import MovieDetailList from '../MovieDetailList.tsx';
+import { movieData } from '../../data/staticData.tsx';
 
 function Series() {
 
   useEffect(()=>{getList()},[]);
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]);
+  const [movieList, setMovieList] = useState([]);
+  const [movieGenres, setGenres] = useState([]);
+  const [genreSelected, setGenreSelected] = useState(false);
+
   const getList = async() =>{
-    const res = await movieService.getShowsTitles();
+    // const res = await movieService.getShowsTitles();
+    let res = {
+      movies: movieData,
+      page: 1
+    }
     setMovies(res.movies);
+    setMovieList(res.movies);
+    const genreList:any = [];
+    res.movies.map((movie)=>{
+        console.log(movie)
+        movie?.genres.forEach((item:any)=>{
+            if(!genreList.includes(item)){
+                genreList.push(item);
+            }
+        })
+    })
+    setGenres(genreList);
+  }
+
+  const filterByGenre = (genre)=>{
+    const list = [...movieList];
+    setMovies(list.filter((movie)=>{
+        return movie?.genres.includes(genre)
+    }))
+    setGenreSelected(true);
   }
 
   return (
     <div style={{  background: 'black', paddingBottom: 50  }}>
       <ResponsiveAppBar/>
-      {movies.length>0 ?
+      {movies.length>0 ? 
       <div>
-      <Banner movies={movies} />
-      <div style={{marginLeft: isMobile ? 20: 100, marginTop: 50,}}>
-        <div style={{
-          color: '#FFF',
-          fontFamily: 'Helvetica Neue',
-          fontSize: '30px',
-          fontWeight: 700,
-        }}>
-          New on Netflix
-        </div>
-        <div style={{display:'flex',  gap:20, maxWidth: '90%', marginTop:20, overflow: 'auto'}}>
-            {movies.length>0 && movies.slice(10,20).map((film, index)=>{
-              return <div style={{display:'flex', alignItems:'center'}} >
-                <img loading="lazy" src={film.backdrop_path} style={{borderRadius: 12}} alt="" height={190} width={330} />
-              </div>
-            })}
-        </div>
-      </div>
+        <Banner movies={movies} genres={movieGenres} genresUpdate={(genre)=>{filterByGenre(genre)}} />
+        {genreSelected ? <div style={{margin: isMobile ? 20: 100, position:'relative'}}>
+            <MovieDetailList movies={movies}/>
+        </div> :
+        <div style={{marginLeft: isMobile ? 20: 100, position:'relative'}}>
 
-      <div style={{marginLeft: isMobile ? 20: 100, marginTop: 50}}>
-        <div style={{
-          color: '#FFF',
-          fontFamily: 'Helvetica Neue',
-          fontSize: '30px',
-          fontWeight: 700,
-        }}>
-          Top Shows in India
-        </div>
-        <div style={{display:'flex',  gap:20, maxWidth: '90%', overflow: 'auto'}}>
-            {movies.length>0 && movies.slice(0,10).map((film, index)=>{
-              return <div style={{display:'flex', alignItems:'center'}} >
-                <div
-                  className='index'
-                  style={{
-                    color: '#000',
-                    fontFamily: 'Roboto',
-                    fontSize: 364,
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    marginRight: -60,
-                  }}
-                >{index+1}</div>
-                <img loading="lazy" src={film.poster_path} alt="" height={274} width={182} />
-              </div>
-            })}
-        </div>
-      </div>
+            <MovieList movies={movies.slice(10,20)} title={'New on Netflix'} />
 
-      <div style={{marginLeft: isMobile ? 20: 100, marginTop: 50,}}>
-        <div style={{
-          color: '#FFF',
-          fontFamily: 'Helvetica Neue',
-          fontSize: '30px',
-          fontWeight: 700,
-        }}>
-          Recommended
-        </div>
-        <div style={{display:'flex',  gap:20, maxWidth: '90%', marginTop:20, overflow: 'auto'}}>
-            {movies.length>0 && movies.slice(20,30).map((film, index)=>{
-              return <div style={{display:'flex', alignItems:'center'}} >
-                <img loading="lazy" src={film.poster_path} alt="" height={696} width={410} />
-              </div>
-            })}
-        </div>
-      </div>
+            <TopTen movies={movies.slice(0,10)} title={'Top Movies in India'} />
 
-      <div style={{marginLeft: isMobile ? 20: 100, marginTop: 50,}}>
-        <div style={{
-          color: '#FFF',
-          fontFamily: 'Helvetica Neue',
-          fontSize: '30px',
-          fontWeight: 700,
-        }}>
-          Netflix Originals
-        </div>
-        <div style={{display:'flex',  gap:20, maxWidth: '90%', marginTop:20, overflow: 'auto'}}>
-            {movies.length>0 && movies.slice(30,40).map((film, index)=>{
-              return <div style={{display:'flex', alignItems:'center'}} >
-                <img loading="lazy" src={film.poster_path} alt="" height={696} width={410} />
-              </div>
-            })}
-        </div>
-      </div>
+
+            {/* <VertList movies={movies.slice(20,30)} title={'Recommended'}/> */}
+
+            <MovieList movies={movies.slice(20,30)} title={'Netflix Originals'}/>
+        </div>}
       </div>:
-      <div  style={{display:'flex', justifyContent:'center', alignItems:'center',marginTop: '10%'}}>
+      <div  style={{display:'flex', justifyContent:'center', alignItems:'center', marginTop: '10%'}}>
       <Spinner color='red'/>
       </div>}
     </div>
