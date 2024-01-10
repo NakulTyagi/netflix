@@ -6,6 +6,7 @@ import Series from './components/pages/Series.tsx';
 import NewPop from './components/pages/NewPop.tsx';
 import "react-activity/dist/library.css";
 import VideoPlayer from './components/pages/VideoPlayer.tsx';
+import FancodeHome from './components/fancode/FancodeHome.tsx';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/play" element={<VideoPlayer/>} />
         <Route path="/series" element={<Series/>} />
         <Route path="/new&popular" element={<NewPop/>} />
+        <Route path="/fancode" element={<FancodeHome/>} />
       </Routes>
   );
 }

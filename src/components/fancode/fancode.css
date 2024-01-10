@@ -1,0 +1,23 @@
+.header{
+  background-color:#282C35;
+  width:'100%';
+  padding:20px;
+  color: white;
+
+  .title{
+    font-size: 24px;
+    font-weight: 700;
+    color:red;
+    margin-bottom: 20px;
+  }
+}
+
+.genrelist::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.genrelist {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

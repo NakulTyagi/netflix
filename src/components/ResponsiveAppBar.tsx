@@ -15,7 +15,7 @@ import {useNavigate} from 'react-router-dom';
 import useDetectScroll from '@smakss/react-scroll-direction';
 import './Banner.css';
 
-const pages = ['Home', 'Movies', 'Series', 'New & Popular'];
+const pages = ['Home', 'Movies', 'Series', 'New & Popular', 'Fancode'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
