@@ -36,7 +36,7 @@ function YearMovies({releaseYear, genre}:any) {
     <div>
       <div style={{display:'flex', flexWrap:'wrap', justifyContent:'flex-start', gap: 36, color:'white' }}>
           {movies.length>0 ? movies.slice(0,8).map((movie, index)=>{
-            return <div key={index} style={{display:'flex', position:'relative', backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundImage:`url(${ movie?.poster_path.includes('http') ? movie?.poster_path : defaultImg})`,minHeight:200, width:140,flexDirection:'column',alignItems:'center', overflowX:'hidden'}} onClick={()=>navigate('/play', {state:{title: movie?.title}})} >
+            return <div key={index} style={{display:'flex', position:'relative', cursor:'pointer',backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundImage:`url(${ movie?.poster_path.includes('http') ? movie?.poster_path : defaultImg})`,minHeight:200, width:140,flexDirection:'column',alignItems:'center', overflowX:'hidden'}} onClick={()=>navigate('/play', {state:{title: movie?.title}})} >
                 <div style={{position:'absolute', bottom:0}}>
                   <LinesEllipsis
                       text={movie.title}
@@ -53,6 +53,16 @@ function YearMovies({releaseYear, genre}:any) {
                         marginBottom: 12
                       }}
                   />  
+                  <div
+                  style={{
+                    color: '#FFF',
+                    fontSize: '16px',
+                    fontWeight: 500,
+                    maxWidth: 120,
+                  }}
+                  >
+                    {movie?.vote_average}
+                  </div>
                 </div>            
                 {/* <img loading="lazy" src={movie?.poster_path} alt=""  /> */}
             </div>

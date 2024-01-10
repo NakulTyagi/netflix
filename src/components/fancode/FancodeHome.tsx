@@ -16,7 +16,7 @@ function FancodeHome() {
   const { scrollPosition } = useDetectScroll();
 
   useEffect(()=>{
-    if(scrollPosition.bottom ===0 && years[years.length-1]<=2023){
+    if(scrollPosition.bottom ===0 && years[years.length-1]<2023){
       setYears([...years, years[years.length-1]+1]);
       console.log([...years, years[years.length-1]+1])
     }
@@ -37,7 +37,7 @@ function FancodeHome() {
         </div>
         <div className='genrelist' style={{display:'flex', gap:20, overflow: 'auto'}}>
           {genres.map((genre:any)=>{
-            return <div onClick={()=>setSelectedGenre(genre)} style={{padding:8, backgroundColor: selectedGenre?.id===genre?.id ? 'red': '#36454F', whiteSpace:'nowrap', borderRadius:4}}>
+            return <div onClick={()=>setSelectedGenre(genre)} style={{padding:8, cursor:'pointer',backgroundColor: selectedGenre?.id===genre?.id ? 'red': '#36454F', whiteSpace:'nowrap', borderRadius:4}}>
               <span> {genre?.name}</span>
             </div>
           })}
