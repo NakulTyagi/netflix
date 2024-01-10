@@ -35,9 +35,9 @@ function YearMovies({releaseYear, genre}:any) {
   return (
     <div>
       <div style={{display:'flex', flexWrap:'wrap', justifyContent:'flex-start', gap: 36, color:'white' }}>
-          {movies.length>0 ? movies.slice(0,8).map((movie, index)=>{
-            return <div key={index} style={{display:'flex', position:'relative', cursor:'pointer',backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundImage:`url(${ movie?.poster_path.includes('http') ? movie?.poster_path : defaultImg})`,minHeight:200, width:140,flexDirection:'column',alignItems:'center', overflowX:'hidden'}} onClick={()=>navigate('/play', {state:{title: movie?.title}})} >
-                <div style={{position:'absolute', bottom:0}}>
+          {movies.length>0 ? movies.map((movie, index)=>{
+            return <div key={index} style={{display:'flex', position:'relative', cursor:'pointer',backgroundRepeat:'no-repeat', backgroundSize:'contain',backgroundImage:`url( http://image.tmdb.org/t/p/w185${ movie?.poster_path})`,minHeight:200, width:140,flexDirection:'column',alignItems:'center', overflowX:'hidden'}} onClick={()=>navigate('/play', {state:{title: movie?.title}})} >
+                <div style={{position:'absolute', bottom:8, left:10}}>
                   <LinesEllipsis
                       text={movie.title}
                       maxLine='1'
@@ -47,7 +47,7 @@ function YearMovies({releaseYear, genre}:any) {
                       style={{
                         color: '#FFF',
                         fontSize: '16px',
-                        fontWeight: 500,
+                        fontWeight: 700,
                         marginTop: 20,
                         maxWidth: 120,
                         marginBottom: 12

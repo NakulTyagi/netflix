@@ -52,8 +52,11 @@ To get started with the Netflix Clone project, follow these steps:
 
 ### Screenshot
 
-![alt text](https://miro.medium.com/v2/resize:fit:1400/1*CD6IZsYaiuOOF21CgtEmwg.png)
-
+![alt text](https://github.com/NakulTyagi/netflix/blob/main/src/assets/home.png?raw=true)
+![alt text](https://github.com/NakulTyagi/netflix/blob/main/src/assets/movies-page.png?raw=true)
+![alt text](https://github.com/NakulTyagi/netflix/blob/main/src/assets/detail.png?raw=true)
+![alt text](https://github.com/NakulTyagi/netflix/blob/main/src/assets/player.png?raw=true)
+![alt text](https://github.com/NakulTyagi/netflix/blob/main/src/assets/fancode-ss.png?raw=true)
 
 ## Author
 
