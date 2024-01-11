@@ -39,6 +39,12 @@ To get started with the Netflix Clone project, follow these steps:
 
 - Live Site : https://nakultyagi.github.io/netflix/
 
+### Fancode Assignment
+
+- You can navigate to the project by clicking on Fancode tab in navigation tab header
+- To review the assignment code, go to fancode folder :
+  src --> components --> fancode 
+
 ### Built with
 
 - React js
