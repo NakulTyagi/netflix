@@ -16,9 +16,8 @@ function FancodeHome() {
 	const { scrollPosition } = useDetectScroll();
 
 	useEffect(() => {
-		if (scrollPosition.bottom === 0 && years[years.length - 1] < 2023) {
+		if (scrollPosition.bottom <= 0 && years[years.length - 1] < 2023) {
 			setYears([...years, years[years.length - 1] + 1]);
-			console.log([...years, years[years.length - 1] + 1]);
 		}
 	}, [scrollPosition]);
 

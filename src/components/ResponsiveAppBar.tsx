@@ -69,7 +69,6 @@ function ResponsiveAppBar() {
 	const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
 		null
 	);
-  const [searchText, setText] = React.useState<string>()
 
 	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorElNav(event.currentTarget);
@@ -95,13 +94,16 @@ function ResponsiveAppBar() {
 			navigate("/");
 		}
 	};
-	const { scrollDir, scrollPosition } = useDetectScroll();
+	const { scrollPosition } = useDetectScroll();
+  const timerRef = React.useRef<any>();
 
   const searchMovies=(text)=>{
-    setTimeout(()=>{
-      setText(text);
-      navigate("/browse", { state: {text}})
-    }, 2000)
+		if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    timerRef.current = setTimeout(()=>{
+      navigate("/browse", { state: {text}});
+    }, 500)
   }
 
 	return (
@@ -193,7 +195,6 @@ function ResponsiveAppBar() {
               <StyledInputBase
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
-                value={searchText}
                 onChange={(event)=>{searchMovies(event.target.value)}}
               />
             </Search>

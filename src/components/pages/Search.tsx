@@ -2,23 +2,41 @@ import React, { useEffect, useState } from 'react'
 import movieService from '../../services/movie-service.ts';
 import { useLocation } from 'react-router-dom';
 import ResponsiveAppBar from '../ResponsiveAppBar.tsx';
-import LinesEllipsis from "react-lines-ellipsis";
 import { useNavigate } from "react-router-dom";
+import useDetectScroll from '@smakss/react-scroll-direction';
 
 function Search() {
   const { state } = useLocation();
   const navigate = useNavigate();
+  const [page, setPage]= useState(1);
+  const [totalPages, settotalPages] = useState(0);
+	const [movies, setMovies] = useState<any>([]);
+  const [text, setText] = useState('');
 
   useEffect(() => {
 		getList();
-    console.log(state)
 	}, [state]);
-	const [movies, setMovies] = useState([]);
+  const { scrollPosition } = useDetectScroll();
 
-	const getList = async () => {
-		const resp = await movieService.getSearchMovies(state.text);
-		setMovies(resp.results);
-		console.log(resp)
+	useEffect(() => {
+    console.log(scrollPosition)
+		if (scrollPosition.bottom <= 0 && page<totalPages) {
+      getList(page+1);
+			setPage(page + 1);
+		}
+	}, [scrollPosition]);
+
+	const getList = async (pageNo=1) => {
+    let movieList = movies;
+    if(text!==state.text){
+      movieList = [];
+      setPage(1);
+      pageNo=1;
+    }
+		const resp = await movieService.getSearchMovies(state.text, 'popularity', 2023, pageNo);
+    setText(state.text);
+		setMovies([...movieList,...resp.results]);
+    settotalPages(resp.total_pages);
 	}
   return (
     <div>
@@ -54,49 +72,12 @@ function Search() {
                 >
                   <img
                     loading='lazy'
-                    src={`http://image.tmdb.org/t/p/w185${film?.poster_path}`}
+                    src={film?.poster_path ? `http://image.tmdb.org/t/p/w185${film?.poster_path}` : `http://image.tmdb.org/t/p/w185${film?.backdrop_path}`}
                     alt=''
             
                     style={{ borderTopLeftRadius: 12, borderTopRightRadius: 12, borderRadius:12 }}
                   />
 
-                  {/* <div
-                    style={{
-                      backgroundColor: "#343434",
-                      padding: 12,
-                      borderBottomLeftRadius: 12,
-                      borderBottomRightRadius: 12,
-                      marginTop: -12,
-                    }}
-                  >
-                    <LinesEllipsis
-                      style={{
-                        color: "#d2d2d2",
-                        fontSize: "24px",
-                        fontWeight: 700,
-                        marginBottom: 12,
-                      }}
-                      text={film.title}
-                      maxLine='1'
-                      ellipsis='...'
-                      trimRight
-                      basedOn='letters'
-                    />
-                    <div
-                      style={{
-                        marginBottom: 12,
-                      }}
-                    >
-                      {new Date(film.release_date).toDateString().slice(3)}
-                    </div>
-                    <LinesEllipsis
-                      text={film.overview}
-                      maxLine='3'
-                      ellipsis='...'
-                      trimRight
-                      basedOn='letters'
-                    />
-                  </div> */}
                 </div>
               );
             })}
