@@ -14,6 +14,50 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import useDetectScroll from "@smakss/react-scroll-direction";
 import "./Banner.css";
+import SearchIcon from '@mui/icons-material/Search';
+import { InputBase, alpha, styled } from "@mui/material";
+
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: 20,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  width: '100%',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
+      },
+    },
+  },
+}));
 
 const pages = ["Home", "Movies", "Series", "New & Popular", "Fancode"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -25,6 +69,7 @@ function ResponsiveAppBar() {
 	const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
 		null
 	);
+  const [searchText, setText] = React.useState<string>()
 
 	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorElNav(event.currentTarget);
@@ -51,6 +96,13 @@ function ResponsiveAppBar() {
 		}
 	};
 	const { scrollDir, scrollPosition } = useDetectScroll();
+
+  const searchMovies=(text)=>{
+    setTimeout(()=>{
+      setText(text);
+      navigate("/browse", { state: {text}})
+    }, 2000)
+  }
 
 	return (
 		<AppBar
@@ -133,7 +185,18 @@ function ResponsiveAppBar() {
 						))}
 					</Box>
 
-					<Box sx={{ flexGrow: 0 }}>
+					<Box sx={{ flexGrow: 0,display: { xs: "none", md: "flex" }  }}>
+            <Search style={{marginRight:20}}>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                value={searchText}
+                onChange={(event)=>{searchMovies(event.target.value)}}
+              />
+            </Search>
 						<Tooltip title='Open settings'>
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
 								<Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />

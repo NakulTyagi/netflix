@@ -7,6 +7,7 @@ import NewPop from './components/pages/NewPop.tsx';
 import "react-activity/dist/library.css";
 import VideoPlayer from './components/pages/VideoPlayer.tsx';
 import FancodeHome from './components/fancode/FancodeHome.tsx';
+import Search from './components/pages/Search.tsx';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/series" element={<Series/>} />
         <Route path="/new&popular" element={<NewPop/>} />
         <Route path="/fancode" element={<FancodeHome/>} />
+        <Route path="/browse" element={<Search/>} />
       </Routes>
   );
 }

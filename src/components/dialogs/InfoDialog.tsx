@@ -82,7 +82,7 @@ export default function InfoDialog(props: SimpleDialogProps) {
               <div style={{display:'flex', alignItems:'center', flexWrap:'wrap'}}>
                 <div style={{color:'rgba(255, 255, 255, 0.80)', marginRight: 12}}>Genres: </div>
                 {movie.genres.map((genre, index)=>
-                  <DialogContentText  id="alert-dialog-slide-description">
+                  <DialogContentText key={index} id="alert-dialog-slide-description">
                     {genre}{index===movie.genres.length-1 ?  '': ', '}
                   </DialogContentText>
                 ) }

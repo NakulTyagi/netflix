@@ -1,4 +1,5 @@
 const API_KEY = 'AIzaSyBl-ChvnSrM5GV226-z6O9Ckt4sXBxKSKc'
+const api_key='2dca580c2a14b55200e784d157207b4d';
 
 const movieService = {
     getMovieTitles: async () => {
@@ -48,6 +49,15 @@ const movieService = {
         const response = await fetch(url);
         return response.json();
       },
+
+      //movie db
+      getSearchMovies: async (text,sortBy='popularity', releaseYear=2023, page=1) => {
+        const url =  `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${text}&sort_by=${sortBy}.desc&primary_release_year=${releaseYear}&page=${page}&vote_count.gte=100`;
+    
+        const response = await fetch(url);;
+        return response.json();
+      },
+
 }
 
 export default movieService;
