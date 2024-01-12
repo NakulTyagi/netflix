@@ -7,7 +7,7 @@ The project mimics Netflix's sleek and user-friendly interface, allowing users t
 - **Movie list:** Displaying list of movies and show
 - **Video player:** User can watch trailer of the movies and shows
 - **Filter by Genre:** User can filter movies by genre
-- **Browse and Search:** Explore a vast collection of movies and TV shows, and search for specific titles. (to be implmented)
+- **Browse and Search:** Explore a vast collection of movies and TV shows, and search for specific titles.
 - **Responsive Design:** The application is designed to work seamlessly on various devices, providing a consistent experience.
 
 ## Getting Started
