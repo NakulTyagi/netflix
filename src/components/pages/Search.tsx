@@ -19,7 +19,6 @@ function Search() {
   const { scrollPosition } = useDetectScroll();
 
 	useEffect(() => {
-    console.log(scrollPosition)
 		if (scrollPosition.bottom <= 0 && page<totalPages) {
       getList(page+1);
 			setPage(page + 1);
@@ -35,8 +34,8 @@ function Search() {
     }
 		const resp = await movieService.getSearchMovies(state.text, 'popularity', 2023, pageNo);
     setText(state.text);
-		setMovies([...movieList,...resp.results]);
     settotalPages(resp.total_pages);
+		setMovies([...movieList,...resp.results]);
 	}
   return (
     <div>
@@ -49,6 +48,7 @@ function Search() {
           marginTop: 50,
           cursor: "pointer",
           color: "#d2d2d2",
+          marginBottom: 100
         }}
       >
         <div
