@@ -59,7 +59,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const pages = ["Home", "Movies", "Series", "New & Popular", "Fancode"];
+const pages = ["Home", "Movies", "Series", "New & Popular"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
