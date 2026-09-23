@@ -1,2 +1,3 @@
 User-agent: *
+Allow: /google5fdf3faf63c2b1d6.html
 Disallow: /
