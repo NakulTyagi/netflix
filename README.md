@@ -37,7 +37,7 @@ To get started with this project, follow these steps:
 
 ### Demo
 
-- Live Site : https://nakultyagi.github.io/nt-flix/
+- Live Site : https://nt-flix.netlify.app/
 
 ### Fancode Assignment
 
