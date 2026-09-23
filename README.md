@@ -1,6 +1,6 @@
-## Netflix (replica)
+## NT Flix (unofficial demo)
 
-The project mimics Netflix's sleek and user-friendly interface, allowing users to browse, search, and watch a curated collection of movies and TV shows. (React).
+Portfolio UI demo inspired by streaming apps. It is **not Netflix** and is not affiliated with Netflix, Inc. There are no logins or payments. (React).
 
 ### Features
 
@@ -12,7 +12,7 @@ The project mimics Netflix's sleek and user-friendly interface, allowing users t
 
 ## Getting Started
 
-To get started with the Netflix Clone project, follow these steps:
+To get started with this project, follow these steps:
 
 1. Clone the repository:
 

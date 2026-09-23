@@ -178,7 +178,7 @@ function Banner({ movies, genres = [], genresUpdate }: any) {
 						>
 							<MovieList
 								movies={movies.slice(0, 10)}
-								title={"Popular on Netflix"}
+								title={"Popular on NT Flix"}
 							/>
 						</div>
 					)}

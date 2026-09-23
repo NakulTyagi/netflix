@@ -73,7 +73,7 @@ function Movies() {
 						>
 							<MovieList
 								movies={movies.slice(10, 20)}
-								title={"New on Netflix"}
+								title={"New on NT Flix"}
 							/>
 
 							<TopTen
@@ -85,7 +85,7 @@ function Movies() {
 
 							<MovieList
 								movies={movies.slice(20, 30)}
-								title={"Netflix Originals"}
+								title={"NT Flix originals"}
 							/>
 						</div>
 					)}

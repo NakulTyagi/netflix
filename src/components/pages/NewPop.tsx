@@ -36,7 +36,7 @@ function NewPop() {
 						position: "relative",
 					}}
 				>
-					<MovieList movies={movies.slice(0, 10)} title={"New on Netflix"} />
+					<MovieList movies={movies.slice(0, 10)} title={"New on NT Flix"} />
 
 					<TopTen movies={movies.slice(10, 20)} title={"Top Movies in India"} />
 

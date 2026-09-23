@@ -60,7 +60,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const pages = ["Home", "Movies", "Series", "New & Popular"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Demo only — no account"];
 
 function ResponsiveAppBar() {
 	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -117,16 +117,32 @@ function ResponsiveAppBar() {
 		>
 			<Container maxWidth='xl' style={{ zIndex: 100 }}>
 				<Toolbar disableGutters>
-					<img
-						loading='lazy'
-						src={
-							"https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-						}
-						style={{ marginRight: 20 }}
-						alt='Netflix img'
-						width={92}
-						height={28}
-					/>
+					<Box sx={{ mr: 2, display: "flex", alignItems: "baseline", gap: 1 }}>
+						<Typography
+							component='div'
+							sx={{
+								fontWeight: 800,
+								letterSpacing: 0.6,
+								fontSize: { xs: 18, md: 22 },
+								color: "#7dd3fc",
+								lineHeight: 1,
+								whiteSpace: "nowrap",
+							}}
+						>
+							NT Flix
+						</Typography>
+						<Typography
+							component='span'
+							sx={{
+								display: { xs: "none", sm: "inline" },
+								fontSize: 11,
+								color: "rgba(255,255,255,0.72)",
+								whiteSpace: "nowrap",
+							}}
+						>
+							unofficial demo
+						</Typography>
+					</Box>
 
 					<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
 						<IconButton
@@ -170,8 +186,6 @@ function ResponsiveAppBar() {
 							))}
 						</Menu>
 					</Box>
-					{/* <img loading="lazy" src={'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg'} alt='Netflix img' width={92} height={28}/> */}
-
 					<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 						{pages.map((page) => (
 							<Button
