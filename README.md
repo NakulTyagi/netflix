@@ -17,7 +17,7 @@ To get started with this project, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/NakulTyagi/netflix.git
+   git clone https://github.com/NakulTyagi/nt-flix.git
 
 1. Change into the project directory:
 
@@ -37,7 +37,7 @@ To get started with this project, follow these steps:
 
 ### Demo
 
-- Live Site : https://nakultyagi.github.io/netflix/
+- Live Site : https://nakultyagi.github.io/nt-flix/
 
 ### Fancode Assignment
 
@@ -58,11 +58,11 @@ To get started with this project, follow these steps:
 
 ### Screenshot
 
-![alt text](https://github.com/NakulTyagi/netflix/blob/main/src/assets/home.png?raw=true)
-![alt text](https://github.com/NakulTyagi/netflix/blob/main/src/assets/movies-page.png?raw=true)
-![alt text](https://github.com/NakulTyagi/netflix/blob/main/src/assets/detail.png?raw=true)
-![alt text](https://github.com/NakulTyagi/netflix/blob/main/src/assets/player.png?raw=true)
-![alt text](https://github.com/NakulTyagi/netflix/blob/main/src/assets/fancode-ss.png?raw=true)
+![alt text](https://github.com/NakulTyagi/nt-flix/blob/main/src/assets/home.png?raw=true)
+![alt text](https://github.com/NakulTyagi/nt-flix/blob/main/src/assets/movies-page.png?raw=true)
+![alt text](https://github.com/NakulTyagi/nt-flix/blob/main/src/assets/detail.png?raw=true)
+![alt text](https://github.com/NakulTyagi/nt-flix/blob/main/src/assets/player.png?raw=true)
+![alt text](https://github.com/NakulTyagi/nt-flix/blob/main/src/assets/fancode-ss.png?raw=true)
 
 ## Author
 
