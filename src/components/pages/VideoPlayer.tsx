@@ -19,8 +19,11 @@ function VideoPlayer() {
 
 	const yt = async () => {
 		const res = await movieService.getYoutubeSearch(state.title);
-		setVideoId(res.items[0].id.videoId);
+		setVideoId(res?.items?.[0]?.id?.videoId);
 	};
+	const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(
+		state?.title || "trailer"
+	)}`;
 	return (
 		<div
 			style={{
@@ -43,6 +46,7 @@ function VideoPlayer() {
 				}}
 				onClick={() => navigate("/")}
 			/>
+			{videoID ? (
 			<ReactPlayer
 				url={`https://www.youtube.com/watch?v=${videoID}`}
 				width='96vw'
@@ -50,7 +54,17 @@ function VideoPlayer() {
 				style={{ padding: 20 }}
 				playing={playing}
 			/>
-			{playing ? (
+			) : (
+				<a
+					href={youtubeSearchUrl}
+					target="_blank"
+					rel="noreferrer"
+					style={{ color: "#7dd3fc", fontSize: 18 }}
+				>
+					Watch trailer on YouTube
+				</a>
+			)}
+			{videoID && (playing ? (
 				<PauseIcon
 					style={{
 						position: "absolute",
@@ -76,7 +90,7 @@ function VideoPlayer() {
 					}}
 					onClick={() => setPlaying(true)}
 				/>
-			)}
+			))}
 		</div>
 	);
 }

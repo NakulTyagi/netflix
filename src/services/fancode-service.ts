@@ -1,16 +1,23 @@
-const api_key='2dca580c2a14b55200e784d157207b4d';
+const tmdbKey = process.env.REACT_APP_TMDB_API_KEY;
+
 const fancodeService = {
     getMovieTitles: async (sortBy='popularity', releaseYear=2023, page=1) => {
-        const url =  `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&sort_by=${sortBy}.desc&primary_release_year=${releaseYear}&page=${page}&vote_count.gte=100`;
+        if (!tmdbKey) {
+          return { results: [] };
+        }
+        const url =  `https://api.themoviedb.org/3/discover/movie?api_key=${tmdbKey}&sort_by=${sortBy}.desc&primary_release_year=${releaseYear}&page=${page}&vote_count.gte=100`;
     
-        const response = await fetch(url);;
+        const response = await fetch(url);
         return response.json();
       },
 
       getGenres: async () => {
-        const url = 'https://api.themoviedb.org/3/genre/movie/list?api_key='+api_key;
+        if (!tmdbKey) {
+          return { genres: [] };
+        }
+        const url = 'https://api.themoviedb.org/3/genre/movie/list?api_key='+tmdbKey;
     
-        const response = await fetch(url);;
+        const response = await fetch(url);
         return response.json();
       },
 

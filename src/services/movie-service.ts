@@ -1,5 +1,6 @@
-const API_KEY = 'AIzaSyBl-ChvnSrM5GV226-z6O9Ckt4sXBxKSKc'
-const api_key='2dca580c2a14b55200e784d157207b4d';
+const youtubeKey = process.env.REACT_APP_YOUTUBE_API_KEY;
+const tmdbKey = process.env.REACT_APP_TMDB_API_KEY;
+const rapidApiKey = process.env.REACT_APP_RAPIDAPI_KEY;
 
 const movieService = {
     getMovieTitles: async () => {
@@ -7,12 +8,12 @@ const movieService = {
         const options = {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': '1fffba5decmshc04e02bd7ba41d4p1bd287jsn0de02ee6c949',
+                'X-RapidAPI-Key': rapidApiKey,
                 'X-RapidAPI-Host': 'movies-api14.p.rapidapi.com'
             }
         };
     
-        const response = await fetch(url, options);;
+        const response = await fetch(url, options);
         return response.json();
       },
 
@@ -21,12 +22,12 @@ const movieService = {
         const options = {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': '1fffba5decmshc04e02bd7ba41d4p1bd287jsn0de02ee6c949',
+                'X-RapidAPI-Key': rapidApiKey,
                 'X-RapidAPI-Host': 'movies-api14.p.rapidapi.com'
             }
         };
     
-        const response = await fetch(url, options);;
+        const response = await fetch(url, options);
         return response.json();
       },
 
@@ -35,26 +36,31 @@ const movieService = {
         const options = {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': '1fffba5decmshc04e02bd7ba41d4p1bd287jsn0de02ee6c949',
+                'X-RapidAPI-Key': rapidApiKey,
                 'X-RapidAPI-Host': 'movies-api14.p.rapidapi.com'
             },
         };
     
-        const response = await fetch(url, options);;
+        const response = await fetch(url, options);
         return response.json();
       },
 
       getYoutubeSearch: async (searchQuery='zoo') => {
-        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${searchQuery}&type=video&key=${API_KEY}`;
+        if (!youtubeKey) {
+          return { items: [] };
+        }
+        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${searchQuery}&type=video&key=${youtubeKey}`;
         const response = await fetch(url);
         return response.json();
       },
 
-      //movie db
       getSearchMovies: async (text,sortBy='popularity', releaseYear=2023, page=1) => {
-        const url =  `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${text}&sort_by=${sortBy}.desc&primary_release_year=${releaseYear}&page=${page}&vote_count.gte=100`;
+        if (!tmdbKey) {
+          return { results: [], total_pages: 0 };
+        }
+        const url =  `https://api.themoviedb.org/3/search/movie?api_key=${tmdbKey}&query=${text}&sort_by=${sortBy}.desc&primary_release_year=${releaseYear}&page=${page}&vote_count.gte=100`;
     
-        const response = await fetch(url);;
+        const response = await fetch(url);
         return response.json();
       },
 
